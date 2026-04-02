@@ -1,0 +1,173 @@
+<form>
+    <field>
+        <type>header</type>
+        <label>DNS Settings</label>
+    </field>
+    <field>
+        <id>adguardhome.dns.bind_hosts</id>
+        <label>Listen Interfaces</label>
+        <type>select_multiple</type>
+        <help><![CDATA[Interfaces to listen on for DNS queries. Leave empty to listen on all interfaces (0.0.0.0).]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.port</id>
+        <label>Port</label>
+        <type>text</type>
+        <hint>53</hint>
+        <help><![CDATA[The TCP/UDP port used for responding to DNS queries.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.anonymize_client_ip</id>
+        <label>Anonymize Client IP</label>
+        <type>checkbox</type>
+        <help><![CDATA[Anonymize client IP addresses in logs and statistics.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.ratelimit</id>
+        <label>Rate Limit</label>
+        <type>text</type>
+        <hint>0</hint>
+        <help><![CDATA[Maximum number of requests per second from a single client. Set to 0 to disable.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.ratelimit_subnet_len_ipv4</id>
+        <label>Rate Limit Subnet Length (IPv4)</label>
+        <type>text</type>
+        <hint>24</hint>
+        <help><![CDATA[Subnet prefix length used for rate limiting IPv4 clients.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.ratelimit_subnet_len_ipv6</id>
+        <label>Rate Limit Subnet Length (IPv6)</label>
+        <type>text</type>
+        <hint>56</hint>
+        <help><![CDATA[Subnet prefix length used for rate limiting IPv6 clients.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.ratelimit_whitelist</id>
+        <label>Rate Limiting Allowlist</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help><![CDATA[IP addresses excluded from rate limiting. Type an address and press Enter to add.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.refuse_any</id>
+        <label>Refuse ANY Requests</label>
+        <type>checkbox</type>
+        <help><![CDATA[Refuse resolving DNS queries of type ANY.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.edns_cs_enabled</id>
+        <label>Enable EDNS Client Subnet</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable EDNS Client Subnet (ECS) extension. Adds client subnet information to DNS queries sent to upstream servers.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.edns_cs_custom_ip</id>
+        <label>EDNS Custom IP</label>
+        <type>text</type>
+        <help><![CDATA[Custom IP address to use for EDNS Client Subnet. Only used when EDNS Client Subnet is enabled.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.enable_dnssec</id>
+        <label>Enable DNSSEC</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable DNSSEC validation of DNS responses.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.aaaa_disabled</id>
+        <label>Disable Resolving of IPv6 Addresses</label>
+        <type>checkbox</type>
+        <help><![CDATA[Disable resolving of IPv6 (AAAA) addresses. All AAAA queries will return an empty answer.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.blocking_mode</id>
+        <label>Blocking Mode</label>
+        <type>dropdown</type>
+        <help><![CDATA[How blocked DNS responses are returned to clients.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.blocking_ipv4</id>
+        <label>Blocking IPv4</label>
+        <type>text</type>
+        <help><![CDATA[Custom IPv4 address to return for blocked queries. Only used when Blocking Mode is set to Custom IP.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.blocking_ipv6</id>
+        <label>Blocking IPv6</label>
+        <type>text</type>
+        <help><![CDATA[Custom IPv6 address to return for blocked queries. Only used when Blocking Mode is set to Custom IP.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.blocked_response_ttl</id>
+        <label>Blocked Response TTL</label>
+        <type>text</type>
+        <hint>10</hint>
+        <help><![CDATA[TTL in seconds for blocked DNS responses.]]></help>
+    </field>
+    <field>
+        <type>header</type>
+        <label>Upstream DNS</label>
+    </field>
+    <field>
+        <id>adguardhome.dns.upstream_mode</id>
+        <label>Upstream Mode</label>
+        <type>dropdown</type>
+        <help><![CDATA[How to query upstream DNS servers.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.upstream_dns</id>
+        <label>Upstream DNS Servers</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help><![CDATA[Upstream DNS server addresses.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.upstream_timeout</id>
+        <label>Upstream Timeout</label>
+        <type>text</type>
+        <help><![CDATA[Timeout for upstream DNS requests in seconds.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.bootstrap_dns</id>
+        <label>Bootstrap DNS Servers</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help><![CDATA[DNS servers used to resolve upstream DoH/DoT hostnames.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.fallback_dns</id>
+        <label>Fallback DNS Servers</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help><![CDATA[Fallback DNS servers used when upstream servers are unavailable.]]></help>
+    </field>
+    <field>
+        <type>header</type>
+        <label>Private Reverse DNS</label>
+    </field>
+    <field>
+        <id>adguardhome.dns.local_ptr_upstreams</id>
+        <label>Private Reverse DNS Servers</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help><![CDATA[DNS servers used for reverse DNS resolution of private IP addresses. Type an address and press Enter to add.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.use_private_ptr_resolvers</id>
+        <label>Use Private Reverse DNS Resolvers</label>
+        <type>checkbox</type>
+        <help><![CDATA[Use private reverse DNS resolvers to resolve PTR queries for private IP ranges.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.resolve_clients</id>
+        <label>Enable Reverse Resolving of Clients' IP Addresses</label>
+        <type>checkbox</type>
+        <help><![CDATA[Resolve client IP addresses to hostnames using reverse DNS.]]></help>
+    </field>
+</form>

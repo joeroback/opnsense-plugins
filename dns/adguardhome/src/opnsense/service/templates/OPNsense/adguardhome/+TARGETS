@@ -1,0 +1,2 @@
+rc.conf.d/adguardhome:/etc/rc.conf.d/adguardhome
+adguardhome.yaml:/usr/local/etc/adguardhome.yaml

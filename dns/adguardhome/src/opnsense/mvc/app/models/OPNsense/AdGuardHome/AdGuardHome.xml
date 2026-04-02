@@ -1,0 +1,325 @@
+<model>
+    <mount>//OPNsense/adguardhome</mount>
+    <description>AdGuard Home configuration</description>
+    <version>1.0.0</version>
+    <items>
+        <general>
+            <enabled type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </enabled>
+            <username type="TextField">
+                <Default>admin</Default>
+                <Required>Y</Required>
+                <Mask>/^([a-zA-Z0-9._\-@]{1,72})$/u</Mask>
+                <ValidationMessage>The username may only contain letters, numbers, dots, underscores, hyphens, and @ signs (1-72 characters).</ValidationMessage>
+            </username>
+            <password type="UpdateOnlyTextField">
+                <Required>N</Required>
+            </password>
+            <http_port type="IntegerField">
+                <Default>3000</Default>
+                <Required>Y</Required>
+                <MinimumValue>1</MinimumValue>
+                <MaximumValue>65535</MaximumValue>
+                <ValidationMessage>HTTP port must be between 1 and 65535.</ValidationMessage>
+            </http_port>
+            <http_address type="InterfaceField">
+                <Required>N</Required>
+                <filters>
+                    <enable>/^(?!0).*$/</enable>
+                </filters>
+            </http_address>
+        </general>
+        <dns>
+            <bind_hosts type="InterfaceField">
+                <Multiple>Y</Multiple>
+                <Required>N</Required>
+                <filters>
+                    <enable>/^(?!0).*$/</enable>
+                </filters>
+            </bind_hosts>
+            <port type="IntegerField">
+                <Default>53</Default>
+                <Required>Y</Required>
+                <MinimumValue>1</MinimumValue>
+                <MaximumValue>65535</MaximumValue>
+                <ValidationMessage>Port must be between 1 and 65535.</ValidationMessage>
+            </port>
+            <anonymize_client_ip type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </anonymize_client_ip>
+            <ratelimit type="IntegerField">
+                <Default>0</Default>
+                <Required>Y</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>65535</MaximumValue>
+            </ratelimit>
+            <ratelimit_subnet_len_ipv4 type="IntegerField">
+                <Default>24</Default>
+                <Required>Y</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>32</MaximumValue>
+                <ValidationMessage>IPv4 subnet length must be between 0 and 32.</ValidationMessage>
+            </ratelimit_subnet_len_ipv4>
+            <ratelimit_subnet_len_ipv6 type="IntegerField">
+                <Default>56</Default>
+                <Required>Y</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>128</MaximumValue>
+                <ValidationMessage>IPv6 subnet length must be between 0 and 128.</ValidationMessage>
+            </ratelimit_subnet_len_ipv6>
+            <ratelimit_whitelist type="CSVListField">
+                <Required>N</Required>
+            </ratelimit_whitelist>
+            <refuse_any type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </refuse_any>
+            <edns_cs_enabled type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </edns_cs_enabled>
+            <edns_cs_custom_ip type="NetworkField">
+                <Required>N</Required>
+                <NetMaskAllowed>N</NetMaskAllowed>
+            </edns_cs_custom_ip>
+            <enable_dnssec type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </enable_dnssec>
+            <aaaa_disabled type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </aaaa_disabled>
+            <blocking_mode type="OptionField">
+                <Default>default</Default>
+                <Required>Y</Required>
+                <OptionValues>
+                    <default>Default</default>
+                    <refused>REFUSED</refused>
+                    <nxdomain>NXDOMAIN</nxdomain>
+                    <null_ip>Null IP</null_ip>
+                    <custom_ip>Custom IP</custom_ip>
+                </OptionValues>
+            </blocking_mode>
+            <blocking_ipv4 type="NetworkField">
+                <Required>N</Required>
+                <NetMaskAllowed>N</NetMaskAllowed>
+                <AddressFamily>ipv4</AddressFamily>
+            </blocking_ipv4>
+            <blocking_ipv6 type="NetworkField">
+                <Required>N</Required>
+                <NetMaskAllowed>N</NetMaskAllowed>
+                <AddressFamily>ipv6</AddressFamily>
+            </blocking_ipv6>
+            <blocked_response_ttl type="IntegerField">
+                <Default>10</Default>
+                <Required>Y</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>86400</MaximumValue>
+                <ValidationMessage>Blocked response TTL must be between 0 and 86400 seconds.</ValidationMessage>
+            </blocked_response_ttl>
+            <upstream_mode type="OptionField">
+                <Default>parallel</Default>
+                <Required>Y</Required>
+                <OptionValues>
+                    <load_balance>Load Balancing</load_balance>
+                    <parallel>Parallel Requests</parallel>
+                    <fastest_addr>Fastest IP Address</fastest_addr>
+                </OptionValues>
+            </upstream_mode>
+            <upstream_dns type="CSVListField">
+                <Required>N</Required>
+            </upstream_dns>
+            <upstream_timeout type="IntegerField">
+                <Default>10</Default>
+                <Required>Y</Required>
+                <MinimumValue>1</MinimumValue>
+                <MaximumValue>300</MaximumValue>
+                <ValidationMessage>Upstream timeout must be between 1 and 300 seconds.</ValidationMessage>
+            </upstream_timeout>
+            <bootstrap_dns type="CSVListField">
+                <Required>N</Required>
+            </bootstrap_dns>
+            <fallback_dns type="CSVListField">
+                <Required>N</Required>
+            </fallback_dns>
+            <local_ptr_upstreams type="CSVListField">
+                <Required>N</Required>
+            </local_ptr_upstreams>
+            <use_private_ptr_resolvers type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </use_private_ptr_resolvers>
+            <resolve_clients type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </resolve_clients>
+            <cache_enabled type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </cache_enabled>
+            <cache_size type="IntegerField">
+                <Default>134217728</Default>
+                <Required>Y</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>1073741824</MaximumValue>
+                <ValidationMessage>Cache size must be between 0 and 1073741824 bytes.</ValidationMessage>
+            </cache_size>
+            <cache_ttl_min type="IntegerField">
+                <Required>N</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>86400</MaximumValue>
+                <ValidationMessage>Minimum TTL must be between 0 and 86400 seconds.</ValidationMessage>
+            </cache_ttl_min>
+            <cache_ttl_max type="IntegerField">
+                <Required>N</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>86400</MaximumValue>
+                <ValidationMessage>Maximum TTL must be between 0 and 86400 seconds.</ValidationMessage>
+            </cache_ttl_max>
+            <cache_optimistic type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </cache_optimistic>
+            <allowed_clients type="CSVListField">
+                <Required>N</Required>
+            </allowed_clients>
+            <disallowed_clients type="CSVListField">
+                <Required>N</Required>
+            </disallowed_clients>
+            <blocked_hosts type="CSVListField">
+                <Required>N</Required>
+            </blocked_hosts>
+        </dns>
+        <encryption>
+            <enabled type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </enabled>
+            <server_name type="TextField">
+                <Required>N</Required>
+                <Mask>/^([a-zA-Z0-9.\-]{0,253})$/u</Mask>
+                <ValidationMessage>Please enter a valid hostname.</ValidationMessage>
+            </server_name>
+            <force_https type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </force_https>
+            <port_https type="IntegerField">
+                <Default>443</Default>
+                <Required>Y</Required>
+                <MinimumValue>1</MinimumValue>
+                <MaximumValue>65535</MaximumValue>
+                <ValidationMessage>Port must be between 1 and 65535.</ValidationMessage>
+            </port_https>
+            <port_dns_over_tls type="IntegerField">
+                <Default>853</Default>
+                <Required>Y</Required>
+                <MinimumValue>1</MinimumValue>
+                <MaximumValue>65535</MaximumValue>
+                <ValidationMessage>Port must be between 1 and 65535.</ValidationMessage>
+            </port_dns_over_tls>
+            <port_dns_over_quic type="IntegerField">
+                <Default>853</Default>
+                <Required>Y</Required>
+                <MinimumValue>1</MinimumValue>
+                <MaximumValue>65535</MaximumValue>
+                <ValidationMessage>Port must be between 1 and 65535.</ValidationMessage>
+            </port_dns_over_quic>
+            <certificate_path type="TextField">
+                <Required>N</Required>
+            </certificate_path>
+            <private_key_path type="TextField">
+                <Required>N</Required>
+            </private_key_path>
+            <allow_unencrypted_doh type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </allow_unencrypted_doh>
+            <strict_sni_check type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </strict_sni_check>
+        </encryption>
+        <filtering>
+            <protection_enabled type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </protection_enabled>
+            <parental_enabled type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </parental_enabled>
+            <safebrowsing_enabled type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </safebrowsing_enabled>
+            <safesearch_services type="OptionField">
+                <Multiple>Y</Multiple>
+                <Required>N</Required>
+                <OptionValues>
+                    <bing>Bing</bing>
+                    <duckduckgo>DuckDuckGo</duckduckgo>
+                    <ecosia>Ecosia</ecosia>
+                    <google>Google</google>
+                    <pixabay>Pixabay</pixabay>
+                    <yandex>Yandex</yandex>
+                    <youtube>YouTube</youtube>
+                </OptionValues>
+            </safesearch_services>
+            <filters_update_interval type="IntegerField">
+                <Default>24</Default>
+                <Required>Y</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>8760</MaximumValue>
+                <ValidationMessage>Update interval must be between 0 and 8760 hours.</ValidationMessage>
+            </filters_update_interval>
+        </filtering>
+        <querylog>
+            <enabled type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </enabled>
+            <file_enabled type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </file_enabled>
+            <interval type="IntegerField">
+                <Default>24</Default>
+                <Required>Y</Required>
+                <MinimumValue>1</MinimumValue>
+                <MaximumValue>8760</MaximumValue>
+                <ValidationMessage>Query log rotation must be between 1 and 8760 hours.</ValidationMessage>
+            </interval>
+            <size_memory type="IntegerField">
+                <Default>1000</Default>
+                <Required>Y</Required>
+                <MinimumValue>0</MinimumValue>
+                <MaximumValue>100000</MaximumValue>
+                <ValidationMessage>Memory buffer size must be between 0 and 100000 entries.</ValidationMessage>
+            </size_memory>
+            <ignored type="CSVListField">
+                <Required>N</Required>
+            </ignored>
+        </querylog>
+        <statistics>
+            <enabled type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </enabled>
+            <interval type="IntegerField">
+                <Default>24</Default>
+                <Required>Y</Required>
+                <MinimumValue>1</MinimumValue>
+                <MaximumValue>8760</MaximumValue>
+                <ValidationMessage>Statistics retention must be between 1 and 8760 hours.</ValidationMessage>
+            </interval>
+            <ignored type="CSVListField">
+                <Required>N</Required>
+            </ignored>
+        </statistics>
+    </items>
+</model>

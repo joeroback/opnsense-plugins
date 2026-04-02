@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# PROVIDE: adguardhome
+# REQUIRE: FILESYSTEMS defaultroute netwait resolv
+# BEFORE: NETWORKING
+# KEYWORD: shutdown
+#
+
+. /etc/rc.subr
+
+name=adguardhome
+rcvar=adguardhome_enable
+load_rc_config "${name}"
+
+: ${adguardhome_enable:="NO"}
+: ${adguardhome_command:="/usr/local/bin/${name}"}
+: ${adguardhome_config:="/usr/local/etc/${name}.yaml"}
+: ${adguardhome_workdir:="/var/db/${name}"}
+: ${adguardhome_flags:=}
+
+pidfile="/var/run/${name}_daemon.pid"
+adguardhome_pidfile="/var/run/${name}.pid"
+
+command="/usr/sbin/daemon"
+command_args="-f -S -P ${pidfile} -p ${adguardhome_pidfile} -T ${name} ${adguardhome_command} -c ${adguardhome_config} -w ${adguardhome_workdir} --no-check-update --no-permcheck ${adguardhome_flags}"
+
+start_precmd=adguardhome_startprecmd
+
+adguardhome_startprecmd()
+{
+        if [ ! -d "${adguardhome_workdir}" ]; then
+                install -d "${adguardhome_workdir}";
+        fi
+}
+
+run_rc_command "${1}"

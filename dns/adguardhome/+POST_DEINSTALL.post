@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if service adguardhome status > /dev/null 2>&1; then
+    service adguardhome stop
+fi
+
+rm -f /usr/local/bin/adguardhome
+rm -rf /var/db/adguardhome

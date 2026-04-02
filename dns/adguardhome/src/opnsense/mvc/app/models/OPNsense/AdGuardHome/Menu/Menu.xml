@@ -1,0 +1,10 @@
+<menu>
+    <Services>
+        <AdGuardHome VisibleName="AdGuard Home" cssClass="fa fa-shield fa-fw">
+            <Dashboard order="10" url="/ui/adguardhome/dashboard"/>
+            <QueryLog VisibleName="Query Log" order="20" url="/ui/adguardhome/querylog"/>
+            <Settings order="30" url="/ui/adguardhome/settings"/>
+            <LogFile VisibleName="Log File" order="40" url="/ui/diagnostics/log/core/adguardhome"/>
+        </AdGuardHome>
+    </Services>
+</menu>

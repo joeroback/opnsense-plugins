@@ -1,0 +1,12 @@
+<acl>
+    <page-adguardhome>
+        <name>Services: AdGuard Home</name>
+        <description>Allow access to AdGuard Home</description>
+        <patterns>
+            <pattern>ui/adguardhome/*</pattern>
+            <pattern>api/adguardhome/*</pattern>
+            <pattern>ui/diagnostics/log/core/adguardhome/*</pattern>
+            <pattern>api/diagnostics/log/core/adguardhome/*</pattern>
+        </patterns>
+    </page-adguardhome>
+</acl>

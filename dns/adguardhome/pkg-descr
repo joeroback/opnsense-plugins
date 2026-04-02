@@ -1,0 +1,7 @@
+AdGuard DNS is one of the most privacy-oriented DNS services on the market. It supports such reliable encryption
+protocols as DNS-over-HTTPS, DNS-over-TLS, and DNS-over-QUIC. It can work as a regular DNS resolver in Non-filtering
+mode, but also it can provide DNS-level content blocking: identify requests to ad, tracking, and/or adult domains
+(optionally), and respond with an empty response. AdGuard has its own frequently updated database with names of domains
+that serve ads, trackers, and scam.
+
+WWW: https://github.com/AdguardTeam/AdGuardHome

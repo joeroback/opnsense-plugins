@@ -1,0 +1,37 @@
+<form>
+    <field>
+        <type>header</type>
+        <label>Cache Settings</label>
+    </field>
+    <field>
+        <id>adguardhome.dns.cache_enabled</id>
+        <label>Enable Cache</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable DNS response caching.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.cache_size</id>
+        <label>Cache Size</label>
+        <type>text</type>
+        <hint>134217728</hint>
+        <help><![CDATA[DNS cache size in bytes.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.cache_ttl_min</id>
+        <label>Override Minimum TTL</label>
+        <type>text</type>
+        <help><![CDATA[Override the minimum TTL value (in seconds) for cached DNS entries.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.cache_ttl_max</id>
+        <label>Override Maximum TTL</label>
+        <type>text</type>
+        <help><![CDATA[Override the maximum TTL value (in seconds) for cached DNS entries.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.cache_optimistic</id>
+        <label>Optimistic Caching</label>
+        <type>checkbox</type>
+        <help><![CDATA[Return expired cache entries while refreshing them in the background.]]></help>
+    </field>
+</form>

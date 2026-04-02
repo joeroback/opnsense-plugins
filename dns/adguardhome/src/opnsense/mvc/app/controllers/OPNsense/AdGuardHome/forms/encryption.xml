@@ -1,0 +1,78 @@
+<form>
+    <field>
+        <type>header</type>
+        <label>Encryption Settings</label>
+    </field>
+    <field>
+        <id>adguardhome.encryption.enabled</id>
+        <label>Enable Encryption</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable HTTPS, DNS-over-HTTPS, DNS-over-TLS, and DNS-over-QUIC.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.encryption.server_name</id>
+        <label>Server Name</label>
+        <type>text</type>
+        <help><![CDATA[The hostname used for TLS certificate validation (SNI). Must match the certificate's Common Name or SAN.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.encryption.force_https</id>
+        <label>Force HTTPS</label>
+        <type>checkbox</type>
+        <help><![CDATA[Redirect the AdGuard Home web interface from HTTP to HTTPS automatically.]]></help>
+    </field>
+    <field>
+        <type>header</type>
+        <label>Ports</label>
+    </field>
+    <field>
+        <id>adguardhome.encryption.port_https</id>
+        <label>HTTPS Port</label>
+        <type>text</type>
+        <help><![CDATA[Port for the HTTPS web interface and DNS-over-HTTPS.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.encryption.port_dns_over_tls</id>
+        <label>DNS-over-TLS Port</label>
+        <type>text</type>
+        <help><![CDATA[Port for DNS-over-TLS.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.encryption.port_dns_over_quic</id>
+        <label>DNS-over-QUIC Port</label>
+        <type>text</type>
+        <help><![CDATA[Port for DNS-over-QUIC.]]></help>
+    </field>
+    <field>
+        <type>header</type>
+        <label>Certificates</label>
+    </field>
+    <field>
+        <id>adguardhome.encryption.certificate_path</id>
+        <label>Certificate Path</label>
+        <type>text</type>
+        <help><![CDATA[Full path to the TLS certificate file (PEM format).]]></help>
+    </field>
+    <field>
+        <id>adguardhome.encryption.private_key_path</id>
+        <label>Private Key Path</label>
+        <type>text</type>
+        <help><![CDATA[Full path to the TLS private key file (PEM format).]]></help>
+    </field>
+    <field>
+        <type>header</type>
+        <label>Advanced</label>
+    </field>
+    <field>
+        <id>adguardhome.encryption.allow_unencrypted_doh</id>
+        <label>Allow Unencrypted DoH</label>
+        <type>checkbox</type>
+        <help><![CDATA[Allow DNS-over-HTTPS requests via unencrypted HTTP. Useful when TLS is terminated by a reverse proxy.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.encryption.strict_sni_check</id>
+        <label>Strict SNI Check</label>
+        <type>checkbox</type>
+        <help><![CDATA[Reject connections if the SNI does not match the server name.]]></help>
+    </field>
+</form>

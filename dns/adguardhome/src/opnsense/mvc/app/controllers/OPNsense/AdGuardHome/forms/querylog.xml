@@ -1,0 +1,39 @@
+<form>
+    <field>
+        <type>header</type>
+        <label>Query Log Settings</label>
+    </field>
+    <field>
+        <id>adguardhome.querylog.enabled</id>
+        <label>Enable Query Log</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable logging of DNS queries.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.querylog.file_enabled</id>
+        <label>Write to File</label>
+        <type>checkbox</type>
+        <help><![CDATA[Write query log entries to a file for persistence across restarts.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.querylog.interval</id>
+        <label>Retention Period (hours)</label>
+        <type>text</type>
+        <hint>24</hint>
+        <help><![CDATA[How long to keep query log entries before they are automatically deleted, in hours.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.querylog.size_memory</id>
+        <label>Memory Buffer Size</label>
+        <type>text</type>
+        <help><![CDATA[Number of query log entries to keep in memory for fast access.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.querylog.ignored</id>
+        <label>Ignored Domains</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help><![CDATA[Domains to exclude from the query log. Type a domain and press Enter to add.]]></help>
+    </field>
+</form>

@@ -1,0 +1,124 @@
+<form>
+    <field>
+        <type>header</type>
+        <label>General Settings</label>
+    </field>
+    <field>
+        <id>adguardhome.general.enabled</id>
+        <label>Enable</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable or disable AdGuard Home.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.general.username</id>
+        <label>Username</label>
+        <type>text</type>
+        <help><![CDATA[Username for the AdGuard Home web interface.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.general.password</id>
+        <label>Password</label>
+        <type>password</type>
+        <help><![CDATA[Password for the AdGuard Home web interface.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.general.http_port</id>
+        <label>HTTP Port</label>
+        <type>text</type>
+        <hint>3000</hint>
+        <help><![CDATA[HTTP port for the AdGuard Home web interface.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.general.http_address</id>
+        <label>HTTP Listen Address</label>
+        <type>dropdown</type>
+        <help><![CDATA[Interface to bind the AdGuard Home web interface to. Leave empty to listen on all interfaces (0.0.0.0).]]></help>
+    </field>
+    <field>
+        <id>adguardhome.filtering.protection_enabled</id>
+        <label>Block Domains Using Filters and Hosts Files</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable DNS filtering and blocking using configured filter lists and hosts files.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.filtering.filters_update_interval</id>
+        <label>Filter Update Interval (hours)</label>
+        <type>text</type>
+        <hint>24</hint>
+        <help><![CDATA[How often to check for filter list updates, in hours. Set to 0 to disable automatic updates.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.filtering.safebrowsing_enabled</id>
+        <label>Use AdGuard Browsing Security Web Service</label>
+        <type>checkbox</type>
+        <help><![CDATA[Block access to known malicious and phishing domains using the AdGuard browsing security service.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.filtering.parental_enabled</id>
+        <label>Use AdGuard Parental Control Web Service</label>
+        <type>checkbox</type>
+        <help><![CDATA[Block access to adult content domains using the AdGuard parental control service.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.filtering.safesearch_services</id>
+        <label>Safe Search</label>
+        <type>select_multiple</type>
+        <help><![CDATA[Enforce safe search on selected services.]]></help>
+    </field>
+    <field>
+        <type>header</type>
+        <label>Logs</label>
+    </field>
+    <field>
+        <id>adguardhome.querylog.enabled</id>
+        <label>Enable Log</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable query logging.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.dns.anonymize_client_ip</id>
+        <label>Anonymize Client IP</label>
+        <type>checkbox</type>
+        <help><![CDATA[Anonymize client IP addresses in logs and statistics.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.querylog.interval</id>
+        <label>Query Logs Rotation (hours)</label>
+        <type>text</type>
+        <hint>24</hint>
+        <help><![CDATA[How long to keep query log entries, in hours.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.querylog.ignored</id>
+        <label>Ignored Domains</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help><![CDATA[Domains to exclude from the query log. Type a domain and press Enter to add.]]></help>
+    </field>
+    <field>
+        <type>header</type>
+        <label>Statistics</label>
+    </field>
+    <field>
+        <id>adguardhome.statistics.enabled</id>
+        <label>Enable Statistics</label>
+        <type>checkbox</type>
+        <help><![CDATA[Enable collection of DNS query statistics.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.statistics.interval</id>
+        <label>Statistics Retention (hours)</label>
+        <type>text</type>
+        <hint>24</hint>
+        <help><![CDATA[How long to keep statistics data, in hours.]]></help>
+    </field>
+    <field>
+        <id>adguardhome.statistics.ignored</id>
+        <label>Ignored Domains</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help><![CDATA[Domains to exclude from statistics. Type a domain and press Enter to add.]]></help>
+    </field>
+</form>
